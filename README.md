@@ -1,9 +1,26 @@
 
-# 쓰레기 무단투기 ...
+# 쓰레기 불법 투기 감지를 위한 영상처리 알고리즘 연구
 
 ## Introduction
 
-데모 프로그램 소개
+### Features
+- 행동 인식(Action Recognition) 신경망을 활용한 불법 쓰레기 무단 투기 행동 감지
+- MMaction2에서 지원하는 Kinetics-400으로 사전학습된 I3D(Inflated 3D ConvNet) 신경망을 미세 조정(Fine Tuning) 학습을 진행하여 성능 개선
+- AI-HUB에서 제공하는 "이상행동 CCTV 영상"의 투기(dump) 데이터 셋을 사용하여 미세 조정 학습 진행
+
+### I3D(Inflated 3D ConvNet)
+
+- 비디오 데이터의 행동 인식을 위해 설계된 딥러닝 모델로, 2D CNN을 기반으로 3D CNN으로 확장한 모델
+- 
+
+![image](https://github.com/user-attachments/assets/ec816dd4-aad9-491c-b2ca-eb5c6c17adae)
+
+- Google의 Inception V1 아키텍처를 3D로 확장하여 설계되었음
+- 각 컨볼루션 필터가 2D 대신 3D로 작동하며, 동영상 데이터를 처리할 수 있도록 시간 축 정보도 포함됨
+
+![image](https://github.com/user-attachments/assets/c74c9c53-6f29-4de6-99f9-80a5a0243d51)
+
+
 
 ## Installation
 
@@ -39,6 +56,7 @@ pip install -v -e .
 ## Run
 Video input Video output
 download link (weight file) : [i3d_imagenet-pretrained-r50-heavy_8xb8-32x2x1-100e_kinetics400-rgb_trained_by_hnu_epoch_40.pth]()
+
 download link (demo video, dump) : [i3d_imagenet-pretrained-r50-heavy_8xb8-32x2x1-100e_kinetics400-rgb_trained_by_hnu_epoch_40.pth]()
 ```
 python demo/demo_visualize.py configs/recognition/i3d/i3d_dense_trained_by_hnu.py \
@@ -56,8 +74,8 @@ python demo/demo_visualize.py configs/recognition/i3d/i3d_dense_trained_by_hnu.p
 ## Acknowledgement
 
 
-
 ## Related linkes
 
+- [I3D](https://arxiv.org/pdf/1705.07750)
 - [MMDetection](https://github.com/open-mmlab/mmdetection): OpenMMLab detection toolbox and benchmark.
 - [MMAction2](https://github.com/open-mmlab/mmaction2): OpenMMLab Video Action Recognition toolbox and benchmark.
